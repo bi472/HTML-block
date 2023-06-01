@@ -1,85 +1,103 @@
+@media (max-width: 768px) {
+    main {
+        max-width: 100%;
+        margin: 30px auto;
+        padding: 0 20px;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}
+
 body {
     background-color: #f2f2f2;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-  }
-  
-  header {
+}
+
+header {
     background-color: #333;
     color: #fff;
     padding: 20px;
     text-align: center;
-  }
-  
-  main {
+    height: auto;
+    max-width: 100%;
+}
+
+main {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     margin-top: 30px;
-  }
-  
-  .column {
+}
+
+.column {
     margin: 10px;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .column h2 {
-    margin-top: 0;
-  }
-  
-  .column p {
-    margin-bottom: 20px;
-  }
-  
-  .description,
-  .useful-links {
-    margin-bottom: 20px;
-  }
-  
-  ul {
-    padding-left: 20px;
-  }
-  
-  form {
-    margin-bottom: 20px;
-  }
-  
-  form label {
-    display: block;
-  }
+    max-width: 100%;
+}
 
-  .place,
-  .language,
-  .city,
-  .work {
+.column img{
+    max-width: 100%;
+    height: auto;
+}
+
+.column h2 {
+    margin-top: 0;
+}
+
+.column p {
+    margin-bottom: 20px;
+}
+
+.description,
+.useful-links {
+    margin-bottom: 20px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form label {
+    display: block;
+}
+
+.place,
+.language,
+.city,
+.work {
     margin-bottom: 5px;
-  }
-  
-  form select {
+}
+
+form select {
     margin-bottom: 10px;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
-  }
-  
-  
-  form input[type="submit"] {
+}
+
+
+form input[type="submit"] {
     background-color: #333;
     color: #fff;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-  }
-  
-  footer {
+}
+
+footer {
     background-color: #333;
     color: #fff;
     padding: 10px;
     text-align: center;
+    max-width: 100%;
     font-size: 14px;
-  }
-  
+}
