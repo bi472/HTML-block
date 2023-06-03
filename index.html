@@ -41,6 +41,8 @@
             </div>
             <div id="root">
             </div>
+            <h2>Курсы биткоинов:</h2>
+            <div id = "bitcoin_exchange"></div>
         </div>
         </div>
     </main>
@@ -53,6 +55,7 @@
 <script src="https://unpkg.com/react/umd/react.development.js"></script>
 <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+<script src="script.js"></script>
 
 <script type="text/babel">
 // Код компонента React
@@ -103,7 +106,7 @@ class FormComponent extends React.Component {
 
     return (
       <form onSubmit={this.handleSubmit}>
-        <div>
+        <div className="city">
           <h2>Ваш любимый город:</h2>
           {radioOptions.map(option => (
             <label key={option.value}>
@@ -118,7 +121,7 @@ class FormComponent extends React.Component {
           ))}
         </div>
 
-        <div>
+        <div className="language">
           <h2>Ваши любимые языки программирования:</h2>
           {checkboxOptions.map(option => (
             <label key={option.value}>
