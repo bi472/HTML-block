@@ -1,11 +1,14 @@
 const apiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=bitcoin%2Capecoin%2Cethereum%2Clitecoin&vs_currencies=usd`
 
-function fetchData() {
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => displayData(data))
-        .catch(error => console.error(error));
-}
+async function fetchData() {
+    try {
+      const response = await fetch('https://api.example.com/data');
+      const data = await response.json();
+      displayData(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
 function displayData(data) {
     const container = document.getElementById('bitcoin_exchange');
