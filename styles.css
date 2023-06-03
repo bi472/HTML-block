@@ -84,7 +84,7 @@ form select {
 }
 
 
-form input[type="submit"] {
+button {
     background-color: #333;
     color: #fff;
     border: none;

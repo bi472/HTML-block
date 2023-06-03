@@ -39,45 +39,8 @@
                 <h2>Любимое место</h2>
                 <p>Моё любимое место это площадь Льва Толстого в Санкт-Петербурге.</p>
             </div>
-            <form action="mailto:fake@example.com" method="post">
-                <div class="language">
-                    <h2>Выберите ваши любимые языки программировнаия</h2>
-                    <label>
-                        <input type="checkbox" name="option1"> Javascript
-                    </label>
-                    <br>
-                    <label>
-                        <input type="checkbox" name="option2"> C#
-                    </label>
-                    <br>
-                </div>
-                <div class="city">
-                    <h2>Какой город вам нравится больше?</h2>
-                    <label>
-                        <input type="radio" name="option" value="1"> Москва
-                    </label>
-                    <br>
-                    <label>
-                        <input type="radio" name="option" value="2"> Санкт-Петербург
-                    </label>
-                    <br>
-                    <label>
-                </div>
-                <div class="work">
-                    <h2>Во сколько вы встаёте на работу?</h2>
-                    <select name="option">
-                        <option value="1">В 10:00</option>
-                        <option value="2">В 11:00</option>
-                    </select>
-                    </label>
-                    <br>
-                </div>
-                <input type="submit" value="Отправить">
-                <h2>Курсы Биткоина: </h2>
-                <div id = "bitcoin_exchange">
-                    <script src="script.js"></script>
-                </div>
-            </form>
+            <div id="root">
+            </div>
         </div>
         </div>
     </main>
@@ -86,5 +49,97 @@
         &copy; 2023 Айдар
     </footer>
 </body>
+
+<script src="https://unpkg.com/react/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+
+<script type="text/babel">
+// Код компонента React
+class FormComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedOption: '',
+      checkedOptions: [],
+    };
+  }
+
+  handleOptionChange = (event) => {
+    this.setState({ selectedOption: event.target.value });
+  }
+
+  handleCheckboxChange = (event) => {
+    const { checkedOptions } = this.state;
+    const optionValue = event.target.value;
+    const isChecked = event.target.checked;
+
+    if (isChecked) {
+      this.setState({ checkedOptions: [...checkedOptions, optionValue] });
+    } else {
+      this.setState({ checkedOptions: checkedOptions.filter(option => option !== optionValue) });
+    }
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const { selectedOption, checkedOptions } = this.state;
+
+    alert(`Любимый город: ${selectedOption}, Любимые языки: ${checkedOptions.join(', ')}`);
+  }
+
+  render() {
+    const { selectedOption, checkedOptions } = this.state;
+
+    const radioOptions = [
+      { value: 'moscow', label: 'Москва' },
+      { value: 'saint-petersburg', label: 'Санкт-Петербург' },
+    ];
+
+    const checkboxOptions = [
+      { value: 'javascript', label: 'Javascript' },
+      { value: 'csharp', label: 'C#' },
+    ];
+
+    return (
+      <form onSubmit={this.handleSubmit}>
+        <div>
+          <h2>Ваш любимый город:</h2>
+          {radioOptions.map(option => (
+            <label key={option.value}>
+              <input
+                type="radio"
+                value={option.value}
+                checked={selectedOption === option.value}
+                onChange={this.handleOptionChange}
+              />
+              {option.label}
+            </label>
+          ))}
+        </div>
+
+        <div>
+          <h2>Ваши любимые языки программирования:</h2>
+          {checkboxOptions.map(option => (
+            <label key={option.value}>
+              <input
+                type="checkbox"
+                value={option.value}
+                checked={checkedOptions.includes(option.value)}
+                onChange={this.handleCheckboxChange}
+              />
+              {option.label}
+            </label>
+          ))}
+        </div>
+
+        <button type="submit" class = "button">Отправить</button>
+      </form>
+    );
+  }
+}
+
+ReactDOM.render(<FormComponent />, document.getElementById('root'));
+</script>
 
 </html>
